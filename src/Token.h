@@ -18,7 +18,6 @@ typedef enum {
   RIGHT_TO_LEFT,
 }Associativity;
 
-
 typedef struct {
   TokenType type;
 }Token;
@@ -32,13 +31,12 @@ typedef struct{
   TokenType type;
   char *symbol;
   Arity arity;
-//  Associativity assoc;
+  Associativity assoc;
   Token *token[0];
 } OperatorToken;
 
-
 // Symbol can be "++", "*", "[", ":"
-OperatorToken *createOperatorToken(char *symbol, Arity arity);
+OperatorToken *createOperatorToken(char *symbol, Arity arity, Associativity assoc);
 IntegerToken *createIntegerToken(int value);
 
 #endif // Token_H

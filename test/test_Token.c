@@ -30,16 +30,30 @@ void test_createIntegerTokens_given_value_2_and_12_return_IntegerTokens(void){
   TEST_ASSERT_EQUAL(12,rightTk.value);
 }
 
-void test_createOperatorToken_given_symbol_ADD_and_MUL_should_return_OperatorToken(void){
+void test_createOperatorToken_given_symbol_ADD_should_return_OperatorToken(void){
   OperatorToken* addToken = malloc(sizeof(OperatorToken));
-  addToken = createOperatorToken("+",INFIX);
-  OperatorToken mulToken = *createOperatorToken("*", INFIX);
+  addToken = createOperatorToken("+",INFIX, LEFT_TO_RIGHT);
   
   TEST_ASSERT_EQUAL(TOKEN_OPERATOR_TYPE,addToken->type);
   TEST_ASSERT_EQUAL("+",addToken->symbol);
   TEST_ASSERT_EQUAL(INFIX,addToken->arity);
+  TEST_ASSERT_EQUAL(LEFT_TO_RIGHT,addToken->assoc);
+}
+
+void test_createOperatorToken_given_symbol_ADD_and_MUL_should_return_OperatorToken(void){
+  OperatorToken* addToken = malloc(sizeof(OperatorToken));
+  addToken = createOperatorToken("+",INFIX, LEFT_TO_RIGHT);
+  OperatorToken mulToken = *createOperatorToken("*", INFIX, RIGHT_TO_LEFT);
+  
+  TEST_ASSERT_EQUAL(TOKEN_OPERATOR_TYPE,addToken->type);
+  TEST_ASSERT_EQUAL("+",addToken->symbol);
+  TEST_ASSERT_EQUAL(INFIX,addToken->arity);
+  TEST_ASSERT_EQUAL(LEFT_TO_RIGHT,addToken->assoc);
+
   
   TEST_ASSERT_EQUAL(TOKEN_OPERATOR_TYPE,mulToken.type);
   TEST_ASSERT_EQUAL("*",mulToken.symbol);
   TEST_ASSERT_EQUAL(INFIX,mulToken.arity);
+  TEST_ASSERT_EQUAL(RIGHT_TO_LEFT,mulToken.assoc);
+
 }

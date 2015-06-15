@@ -36,8 +36,9 @@ void test_add2Tokens_given_2_ADD_3_should_return_Tokens_Tree_with_value(void){
     addToken->type = TOKEN_OPERATOR_TYPE;
     addToken->symbol = "+";
     addToken->arity = INFIX;
+    addToken->assoc = LEFT_TO_RIGHT;
   
-  createOperatorToken_ExpectAndReturn("+", INFIX, addToken);
+  createOperatorToken_ExpectAndReturn("+", INFIX, LEFT_TO_RIGHT, addToken);
   createIntegerToken_ExpectAndReturn(2,leftTk);
   createIntegerToken_ExpectAndReturn(3,rightTk);
   
@@ -52,6 +53,7 @@ void test_add2Tokens_given_2_ADD_3_should_return_Tokens_Tree_with_value(void){
   
   TEST_ASSERT_EQUAL("+",addToken->symbol);
   TEST_ASSERT_EQUAL(INFIX,addToken->arity);
+  TEST_ASSERT_EQUAL(LEFT_TO_RIGHT,addToken->assoc);
  
   TEST_ASSERT_EQUAL(2,((IntegerToken*)addToken->token[0])->value);
   TEST_ASSERT_EQUAL(3,((IntegerToken*)addToken->token[1])->value);

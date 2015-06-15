@@ -45,7 +45,7 @@
 
 
 
-OperatorToken *createOperatorToken(char *symbol, Arity arity){
+OperatorToken *createOperatorToken(char *symbol, Arity arity, Associativity association){
   int i;
   if(arity == INFIX)
     i = 2;
@@ -57,6 +57,10 @@ OperatorToken *createOperatorToken(char *symbol, Arity arity){
   op->type = TOKEN_OPERATOR_TYPE;
   op->symbol = symbol;
   op->arity = arity;
+  if(association == RIGHT_TO_LEFT)
+    op->assoc = RIGHT_TO_LEFT;
+  else
+    op->assoc = LEFT_TO_RIGHT;
 
   return op;
 }
