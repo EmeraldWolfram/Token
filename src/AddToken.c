@@ -37,19 +37,12 @@
 
 
 Token *add2Tokens(int leftValue, char *operatorSymbol, int rightValue){
-  IntegerToken* leftTk = malloc(sizeof(IntegerToken*));
-  IntegerToken* rightTk = malloc(sizeof(IntegerToken*));
-  OperatorToken* addToken = malloc(sizeof(OperatorToken*)+(sizeof(Token*))*2);
+  IntegerToken* leftTk = createIntegerToken(leftValue);
+  IntegerToken* rightTk = createIntegerToken(rightValue);
+  OperatorToken* addToken = createOperatorToken(operatorSymbol, INFIX, LEFT_TO_RIGHT);
 
-  addToken = createOperatorToken(operatorSymbol, INFIX, LEFT_TO_RIGHT);
-  
-  leftTk = createIntegerToken(leftValue);
-  rightTk = createIntegerToken(rightValue);
-  
-  
   addToken->token[0] = (Token*)leftTk;
   addToken->token[1] = (Token*)rightTk;
-  
 
   printf("Left TYPE: %d\t Value: %d\n",leftTk->type,leftTk->value);
   printf("Right TYPE: %d\t Value: %d\n",rightTk->type,rightTk->value);
