@@ -26,17 +26,18 @@ void setUp(void){}
 void tearDown(void){}
 
 void test_add2Tokens_given_2_ADD_3_should_return_Tokens_Tree_with_value(void){
-  IntegerToken* leftTk = malloc(sizeof(IntegerToken*));
-  IntegerToken* rightTk = malloc(sizeof(IntegerToken*));
-  OperatorToken* addToken = malloc(sizeof(OperatorToken*)+(sizeof(Token*))*2);   
-    leftTk->type = TOKEN_INTEGER_TYPE;
-    rightTk->type = TOKEN_INTEGER_TYPE;
-    leftTk->value = 2;
-    rightTk->value = 3;
-    addToken->type = TOKEN_OPERATOR_TYPE;
-    addToken->symbol = "+";
-    addToken->arity = INFIX;
-    addToken->assoc = LEFT_TO_RIGHT;
+  IntegerToken* leftTk      = malloc(sizeof(IntegerToken));
+  IntegerToken* rightTk     = malloc(sizeof(IntegerToken));
+  OperatorToken* addToken   = malloc(sizeof(OperatorToken)+(sizeof(Token*))*2);   
+  
+  leftTk->type      = TOKEN_INTEGER_TYPE;
+  rightTk->type     = TOKEN_INTEGER_TYPE;
+  leftTk->value     = 2;
+  rightTk->value    = 3;
+  addToken->type    = TOKEN_OPERATOR_TYPE;
+  addToken->symbol  = "+";
+  addToken->arity   = INFIX;
+  addToken->assoc   = LEFT_TO_RIGHT;
 
   createIntegerToken_ExpectAndReturn(2,leftTk);
   createIntegerToken_ExpectAndReturn(3,rightTk);    

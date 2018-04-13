@@ -52,7 +52,7 @@ OperatorToken *createOperatorToken(char *symbol, Arity arity, Associativity asso
   else
     i = 1;
 
-  OperatorToken* op = malloc(sizeof(OperatorToken*)+ sizeof(Token*) * i);
+  OperatorToken* op = malloc(sizeof(OperatorToken)+ sizeof(Token*) * i);
   
   op->type = TOKEN_OPERATOR_TYPE;
   op->symbol = symbol;
@@ -66,7 +66,7 @@ OperatorToken *createOperatorToken(char *symbol, Arity arity, Associativity asso
 }
 
 IntegerToken *createIntegerToken(int value){
-  IntegerToken* intTk = malloc(sizeof(IntegerToken*));
+  IntegerToken* intTk = malloc(sizeof(IntegerToken));
   
   intTk->type = TOKEN_INTEGER_TYPE;
   intTk->value = value;
